@@ -13,6 +13,11 @@ public class Main {
         System.out.print("사칙연산 기호를 입력하세요(예: +,-,*,/) : ");
         char operator = sc.nextLine().charAt(0);
 
-
+        double result = 0.0;
+        while (true) {
+            if (operator == '+') {
+                result = num1 + num2;
+            }
+        }
         }
     }
