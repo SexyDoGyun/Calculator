@@ -11,8 +11,7 @@ public class Main {
         int num2 = sc.nextInt();
 
         System.out.print("사칙연산 기호를 입력하세요: ");
-        String operators = sc.nextLine();
-
+        char operator = sc.nextLine().charAt(0);
         }
 
 
