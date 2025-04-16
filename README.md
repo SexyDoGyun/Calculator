@@ -1,12 +1,12 @@
 # Calculator
 
 # Git 컨벤션
-feat: 계산기 덧셈 기능 구현
+feat: 새로운 기능 추가
 
-fix: 나눗셈 0 처리 예외 추가
+fix: 버그 수정
 
-refactor: 사칙연산 분리하여 메서드화
+refactor: 	코드 리팩토링 (기능 변화 없이 구조 개선)
 
-docs: README에 프로젝트 설명 추가
+docs: 문서 수정 (README, 주석 등)
 
-chore: .gitignore 설정 및 프로젝트 초기화
+chore: 기타 설정, 빌드, 패키지 등
