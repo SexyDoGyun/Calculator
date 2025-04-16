@@ -33,6 +33,14 @@ public class Main {
             } else {
                 System.out.println("올바른 연산자를 입력해주세요.");
             }
-        }
+            System.out.println("결과: " + result);
+
+            System.out.print("더 계산하시겠습니까? (exit 입력 시 종료): ");
+            String order = sc.nextLine();
+            if (order.equals("exit")) {
+                System.out.println("계산기를 종료합니다. 안녕히 가세요");
+                break;
+            }
         }
     }
+}
