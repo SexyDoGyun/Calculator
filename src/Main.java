@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -5,11 +6,37 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            System.out.print("첫 번째 숫자를 입력하세요: ");
-            int num1 = sc.nextInt();
+            int num1 = 0;
+            while (true) {
+                System.out.print("첫 번째 숫자를 입력하세요: ");
+                try {
+                    num1 = sc.nextInt();
+                    if (num1 < 0) {
+                        System.out.println("0 이상의 정수만 입력 가능합니다.");
+                        continue;
+                    }
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
+                    sc.nextLine();
+                }
+            }
 
-            System.out.print("두 번째 숫자를 입력하세요: ");
-            int num2 = sc.nextInt();
+            int num2 = 0;
+            while (true) {
+                System.out.print("두 번째 숫자를 입력하세요: ");
+                try {
+                    num2 = sc.nextInt();
+                    if (num2 < 0) {
+                        System.out.println("0 이상의 정수만 입력 가능합니다.");
+                        continue;
+                    }
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
+                    sc.nextLine();
+                }
+            }
             sc.nextLine();
 
             System.out.print("사칙연산 기호를 입력하세요(예: +,-,*,/) : ");
