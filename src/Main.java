@@ -26,7 +26,7 @@ public class Main {
             } else if (operator == '/') {
                 if (num2 == 0) {
                     System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-                    break;
+                    continue;
                 } else {
                     result = (double) num1 / num2;
                 }
