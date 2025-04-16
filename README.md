@@ -1,4 +1,4 @@
-# Calculator LV.1
+# Calculator
 
 # Git 컨벤션
 feat: 새로운 기능 추가
@@ -20,7 +20,7 @@ chore: 기타 설정, 빌드, 패키지 등
     - 예시 코드
         
         ```java
-        public class App {
+        public class lv1.App {
             public static void main(String[] args) {
                 Scanner sc = new Scanner(System.in);
         
@@ -38,7 +38,7 @@ chore: 기타 설정, 빌드, 패키지 등
     - 예시 코드
         
         ```java
-        public class App {
+        public class lv1.App {
             public static void main(String[] args) {
                 Scanner sc = new Scanner(System.in);
                 ...
@@ -57,7 +57,7 @@ chore: 기타 설정, 빌드, 패키지 등
         - 예시 코드
             
             ```java
-            public class App {
+            public class lv1.App {
                 public static void main(String[] args) {
                     Scanner sc = new Scanner(System.in);
                     ...
