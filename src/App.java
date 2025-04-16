@@ -1,16 +1,16 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Main {
+public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            // 첫 번째 숫자 입력
+            // 첫 번째 숫자 입력 : 정수를 입력 받기 위한 스캐너 변수와 메시지를 매개변수로 받습니다.
             int num1 = inputNumber(sc, "첫 번째 숫자를 입력하세요: ");
 
             // 두 번째 숫자 입력
-            int num2 = inputNumber(sc, "두 번째 숫자를 입력하세요: ");
+            int num2 = inputNumber(sc, "두 번째 숫자를 입d력하세요: ");
 
             // 연산자 입력
             char operator = getOperator(sc);
@@ -46,13 +46,6 @@ public class Main {
                 break;
             }
         }
-    }
-
-    private static double divide(int num1, int num2) throws ArithmeticException {
-        if (num2 == 0) {
-            throw new ArithmeticException("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-        }
-        return (double) num1 / num2;
     }
 
     private static double multiply(int num1, int num2) {
