@@ -14,7 +14,7 @@ public class App {
             int num1 = inputNumber(sc, "첫 번째 숫자를 입력하세요: ");
 
             // 두 번째 숫자 입력
-            int num2 = inputNumber(sc, "두 번째 숫자를 입d력하세요: ");
+            int num2 = inputNumber(sc, "두 번째 숫자를 입력하세요: ");
 
             // 연산자 입력
             char operator = getOperator(sc);
