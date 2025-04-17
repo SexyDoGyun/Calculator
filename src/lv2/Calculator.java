@@ -19,7 +19,6 @@ public class Calculator {
 
     public double calculate(int num1, int num2, char operator) {
         double result;
-
         if (operator == '+') {
             result = add(num1, num2);
         } else if (operator == '-') {
@@ -37,31 +36,23 @@ public class Calculator {
     }
 
     private double divide(int num1, int num2) {
-        double result;
         if (num2 == 0) {
             throw new ArithmeticException("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
         } else {
-            result = (double) num1 / num2;
+            return (double) num1 / num2;
         }
-        return result;
     }
 
     private double add(int num1, int num2) {
-        double result;
-        result = num1 + num2;
-        return result;
+        return num1 + num2;
     }
 
     private double subtract(int num1, int num2) {
-        double result;
-        result = num1 - num2;
-        return result;
+        return num1 - num2;
     }
 
     private double multiply(int num1, int num2) {
-        double result;
-        result = num1 * num2;
-        return result;
+        return num1 * num2;
     }
 
     public Queue<Double> getResults() {
