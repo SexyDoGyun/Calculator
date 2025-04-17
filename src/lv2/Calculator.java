@@ -64,5 +64,16 @@ public class Calculator {
         return result;
     }
 
+    public Queue<Double> getResults() {
+        return results;
+    }
+
+    public void removeResult() {
+        if (!results.isEmpty()) {
+            results.poll();
+        }
+    }
+
+
 
 }
