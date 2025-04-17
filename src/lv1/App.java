@@ -12,28 +12,17 @@ public class App {
             int num1 = inputNumber(sc, "첫 번째 숫자를 입력하세요: ");
 
             // 두 번째 숫자 입력
-            int num2 = inputNumber(sc, "두 번째 숫자를 입d력하세요: ");
+            int num2 = inputNumber(sc, "두 번째 숫자를 입력하세요: ");
 
             // 연산자 입력
             char operator = getOperator(sc);
 
             // 연산자에 맞는 연산 수행
-            double result = 0.0;
-            if (operator == '+') {
-                result = add(num1, num2);
-            } else if (operator == '-') {
-                result = subtract(num1, num2);
-            } else if (operator == '*') {
-                result = multiply(num1, num2);
-            } else if (operator == '/') {
-                if (num2 == 0) {
-                    System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-                    continue;
-                } else {
-                    result = (double) num1 / num2;
-                }
-            } else {
-                System.out.println("올바른 연산자를 입력해주세요.");
+            double result;
+            try {
+                result = calculate(operator, num1, num2);
+            } catch (ArithmeticException | IllegalArgumentException e) {
+                System.out.println(e.getMessage());
                 continue;
             }
 
@@ -48,6 +37,32 @@ public class App {
                 break;
             }
         }
+    }
+
+    private static double calculate(char operator, int num1, int num2) {
+        double result;
+        if (operator == '+') {
+            result = add(num1, num2);
+        } else if (operator == '-') {
+            result = subtract(num1, num2);
+        } else if (operator == '*') {
+            result = multiply(num1, num2);
+        } else if (operator == '/') {
+            result = divide(num1, num2);
+        } else {
+            throw new IllegalArgumentException("올바른 연산자를 입력해주세요.");
+        }
+        return result;
+    }
+
+    private static double divide(int num1, int num2) {
+        double result;
+        if (num2 == 0) {
+            throw new ArithmeticException("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
+        } else {
+            result = (double) num1 / num2;
+        }
+        return result;
     }
 
     private static double multiply(int num1, int num2) {
