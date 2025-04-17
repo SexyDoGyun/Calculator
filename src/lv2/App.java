@@ -31,6 +31,11 @@ public class App {
             // 연산 결과 출력
             System.out.println("결과: " + result);
 
+            System.out.print("전체 결과를 확인하시겠습니까?(궁금하다면 yes를 입력해주세요): ");
+            checkingResult(sc, calc);
+
+            System.out.println("가장 오래된 결과를 삭제하시겠습니까?(삭제하고싶다면 del을 입력해주세요.): ");
+            removeOldestResult(sc, calc);
 
             // if 문을 도입하여 exit 입력 시 프로그램 종료
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료): ");
@@ -42,8 +47,21 @@ public class App {
         }
     }
 
+    private static void checkingResult(Scanner sc, Calculator calc) {
+        String checkResult = sc.nextLine();
+        if (checkResult.equals("yes")) {
+            System.out.println("지금까지 계산한 결과: " + calc.getResults());
+        }
+    }
 
-
+    private static void removeOldestResult(Scanner sc, Calculator calc) {
+        String checkDel = sc.nextLine();
+        if (checkDel.equals("del")) {
+            calc.removeResult();
+            System.out.print("현재 남아있는 결과값: " + calc.getResults());
+            sc.nextLine();
+        }
+    }
 
     private static char getOperator(Scanner sc) {
         System.out.print("사칙연산 기호를 입력하세요(예: +,-,*,/) : ");
