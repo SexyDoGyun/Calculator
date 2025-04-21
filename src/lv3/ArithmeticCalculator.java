@@ -1,27 +1,44 @@
 package lv3;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ArithmeticCalculator<T extends Number> {
 
-    private final List<Double> results = new ArrayList<>();
+    public Number calculate(T num1, T num2, OperatorType op) {
+        double a = num1.doubleValue();
+        double b = num2.doubleValue();
 
-
-    public double calculate(T num1, T num2, OperatorType operatorType) {
-        double result = operatorType.apply(num1.doubleValue(), num2.doubleValue());
-        results.add(result);
-        return result;
+        if (op == OperatorType.ADD) {
+            return add(a, b);
+        } else if (op == OperatorType.MINUS) {
+            return minus(a, b);
+        } else if (op == OperatorType.MULTIPLY) {
+            return multiply(a, b);
+        } else if (op == OperatorType.DIVIDE) {
+            return divide(a, b);
+        } else {
+            throw new IllegalArgumentException("올바른 연산자를 입력해주세요.");
+        }
     }
 
-    public List<Double> getResults() {
-        return results;
+    private double add(Number a, Number b) {
+        return a.doubleValue() + b.doubleValue();
     }
 
-    public List<Double> getResultsGreaterThan(double threshold) {
-        return results.stream()
-                .filter(result -> result > threshold)
-                .collect(Collectors.toList());
+    private double minus(Number a, Number b) {
+        return a.doubleValue() - b.doubleValue();
     }
+
+    private double multiply(Number a, Number b) {
+        return a.doubleValue() * b.doubleValue();
+    }
+
+    private double divide(Number a, Number b) {
+        if (b.doubleValue() == 0) {
+            throw new ArithmeticException("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
+        } else {
+            return a.doubleValue() / b.doubleValue();
+        }
+    }
+
+
 }
