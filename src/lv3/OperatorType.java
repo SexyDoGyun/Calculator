@@ -17,6 +17,10 @@ public enum OperatorType {
     private final char operator;
     private final DoubleBinaryOperator operation;
 
+    /**
+     * @param operator 연산자 기호
+     * @param operation 연산 수행 람다식
+     */
     OperatorType(char operator, DoubleBinaryOperator operation) {
         this.operator = operator;
         this.operation = operation;
@@ -26,6 +30,7 @@ public enum OperatorType {
     public char getOperator() {
         return operator;
     }
+
 
     public static OperatorType of(char op) {
         if (op == '+') {
@@ -41,6 +46,8 @@ public enum OperatorType {
         }
     }
 
+
+    //람다식을 사용하기 위한 함수형 인터페이스
     public double calculate(double a, double b) {
         return operation.applyAsDouble(a, b);
     }
