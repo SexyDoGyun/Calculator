@@ -9,9 +9,9 @@ public class App {
         // 계산 기능 객체 생성
         ArithmeticCalculator<Number> calculator = new ArithmeticCalculator<>();
         // 계산 결과 저장 객체 생성
-        ResultRepository calculateResult = new ResultRepository();
+        ResultRepository resultRepository = new ResultRepository();
         // 부가 기능 객체 생성
-        Options options = new Options(calculateResult);
+//        Options options = new Options(resultRepository);
 
         while (true) {
             // 숫자 2개 입력(정수 or 실수)
@@ -29,7 +29,7 @@ public class App {
                 // 계산 수행
                 double result = calculator.calculate(num1, num2, operatorType);
                 // 결과 저장
-                calculateResult.save(result);
+                resultRepository.save(result);
                 System.out.println("계산 결과: " + result);
             } catch (NumberFormatException e) {
                 // 던져진 예외 메시지 출력
@@ -40,7 +40,7 @@ public class App {
             }
 
             // 종료 및 부가기능 수행
-            if (Command.process(options, sc)) break;
+            if (!Command.process(resultRepository, sc)) break;
         }
     }
 
