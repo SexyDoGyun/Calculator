@@ -9,7 +9,7 @@ public class App {
         // 계산 기능 객체 생성
         ArithmeticCalculator<Number> calculator = new ArithmeticCalculator<>();
         // 계산 결과 저장 객체 생성
-        ResultRepository<Number> calculateResult = new ResultRepository<>();
+        ResultRepository calculateResult = new ResultRepository();
         // 부가 기능 객체 생성
         Options options = new Options(calculateResult);
 
@@ -27,13 +27,16 @@ public class App {
                 // 입력한 연산자를 기반으로 OperatorType enum으로 변환
                 OperatorType operatorType = OperatorType.of(op);
                 // 계산 수행
-                Number result = calculator.calculate(num1, num2, operatorType);
+                double result = calculator.calculate(num1, num2, operatorType);
                 // 결과 저장
                 calculateResult.save(result);
                 System.out.println("계산 결과: " + result);
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 // 던져진 예외 메시지 출력
                 System.out.println(e.getMessage());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                continue;
             }
 
             // 종료 및 부가기능 수행
