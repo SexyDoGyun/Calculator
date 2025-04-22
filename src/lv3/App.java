@@ -5,70 +5,41 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+        // 계산 기능 객체 생성
         ArithmeticCalculator<Number> calculator = new ArithmeticCalculator<>();
+        // 계산 결과 저장 객체 생성
         ResultRepository<Number> calculateResult = new ResultRepository<>();
+        // 부가 기능 객체 생성
         Options options = new Options(calculateResult);
 
         while (true) {
-            // 첫 번째 숫자 입력 : 정수를 입력 받기 위한 스캐너 변수와 메시지를 매개변수로 받습니다.
-            Number num1 = inputNumber("첫 번째 숫자를 입력하세요: ", sc);
-            // 두 번째 숫자 입력
-            Number num2 = inputNumber("두 번째 숫자를 입력하세요: ", sc);
+            // 숫자 2개 입력(정수 or 실수)
+            Number num1 = Input.inputNumber("첫 번째 숫자를 입력하세요: ", sc);
+            Number num2 = Input.inputNumber("두 번째 숫자를 입력하세요: ", sc);
 
+            // 연산자 입력
             System.out.print("사칙연산 기호를 입력하세요(+,-,*,/) : ");
             char op = sc.next().charAt(0);
             sc.nextLine();
 
             try {
+                // 입력한 연산자를 기반으로 OperatorType enum으로 변환
                 OperatorType operatorType = OperatorType.of(op);
+                // 계산 수행
                 Number result = calculator.calculate(num1, num2, operatorType);
+                // 결과 저장
                 calculateResult.save(result);
-                System.out.println("결과: " + result);
+                System.out.println("계산 결과: " + result);
             } catch (Exception e) {
+                // 던져진 예외 메시지 출력
                 System.out.println(e.getMessage());
             }
 
-            // if 문을 도입하여 exit 입력 시 프로그램 종료
-            if (options(sc, options)) break;
+            // 종료 및 부가기능 수행
+            if (Command.process(options, sc)) break;
         }
     }
 
-    private static boolean options(Scanner sc, Options manager) {
-        System.out.println("더 계산할건가요?");
-        System.out.println("기능 : [exit : 종료, show : 결과 확인, del : 결과 삭제, big : 특정 값 보다 큰 값 조회]");
-        // order에 대문자, 소문자, 빈 값이 들어올 수 있으므로 받아올 때 toLowerCase().trim()를 통해 소문자로 변환시키고, 양쪽에 빈 값을 없앤다.
-        String order = sc.nextLine().toLowerCase().trim();
-        if (order.equals("exit")) {
-            System.out.println("계산기를 종료합니다. 안녕히 가세요");
-            return true;
-        } else if (order.equals("show")) {
-            manager.showResult();
-        } else if (order.equals("del")) {
-            manager.deleteOldest();
-        } else if (order.equals("big")) {
-            System.out.print("비교하고 싶은 값을 입력해주세요: ");
-            double compareNum = sc.nextDouble();
-            manager.showBigger(compareNum);
-            sc.nextLine();
-        } else {
-            System.out.println("올바른 명령어가 아닙니다. 다시 입력해주세요.");
-        }
-        return false;
-    }
 
-    private static Number inputNumber(String message, Scanner sc) {
-        while (true) {
-            System.out.print(message);
-            String inputNum = sc.nextLine();
-            try {
-                if (inputNum.contains(".")) {
-                    return Double.parseDouble(inputNum);
-                } else {
-                    return Integer.parseInt(inputNum);
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
-            }
-        }
-    }
 }
