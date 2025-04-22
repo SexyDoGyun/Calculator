@@ -3,7 +3,7 @@ package lv3;
 
 public class ArithmeticCalculator<T extends Number> {
 
-    public Number calculate(T num1, T num2, OperatorType op) {
+    public double calculate(T num1, T num2, OperatorType op) {
         double a = num1.doubleValue();
         double b = num2.doubleValue();
 
