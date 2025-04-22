@@ -2,9 +2,9 @@ package lv3;
 
 public class Options {
 
-    private final ResultRepository<Number> resultRepository;
+    private final ResultRepository resultRepository;
 
-    public Options(ResultRepository<Number> resultRepository) {
+    public Options(ResultRepository resultRepository) {
         this.resultRepository = resultRepository;
     }
 
